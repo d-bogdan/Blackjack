@@ -10,11 +10,15 @@ let yourAceCount = 0;
 let hidden;
 let deck;
 
-let canHit = true; //allows the player (you) to draw while yourSum <= 21
+let canHit = false; //allows the player (you) to draw while yourSum <= 21
+
+let currentBet = 0;
+let playerBalance = 1000;
 
 window.onload = function() {
     buildDeck();
     shuffleDeck();
+    setupBettingSystem();
     startGame();
 }
 
