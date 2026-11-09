@@ -7,3 +7,11 @@
     display: block;
     text-align: center;
 }
+
+
+.game-page {
+    background-image: url("../images/blackjack-table.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
