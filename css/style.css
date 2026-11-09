@@ -33,7 +33,10 @@ input {
 }
 
 body {
-    background-color: antiquewhite;
+    background-image: url("../images/background\ image.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;<
 }
 
 #rules {
