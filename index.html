@@ -1,1 +1,69 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>blackjack</h1>
+        <form action="http://www.no-where.com/formhandler.php" method="get">
+        <fieldset>
+            <legend>Blackjack</legend>
+            <div class="form-grid">
+                <label>First name:
+                    <input type="text" name="firstNameField" id="firstNameField" placeholder="Type here"
+                            minlength="2" maxlength="20" pattern="[a-zA-Z\s\-]+" title="Letters, spaces, and hyphens only" required>
+                </label>
+            </div>
+            <div class="submit">
+                <input type="submit" value="Start game">
+            </div>
+        </fieldset>
+        </form>        
+    </div>
+    <div id="rules">
+        <div>
+            <h2 class="ruleHeaders">Scoring:</h2>
+            <ul class="ruleLists">
+                <li>Ace = 1 or 11</ls>
+                <li>Face Cards = 10</li>
+                <li>Number Cards = Value of card</li>
+            </ul>
+        </div>
+        <div>
+            <h2 class="ruleHeaders">Add bets:</h2>
+            <ul class="ruleLists">
+                <li>only at the beginning</li>
+                <li>no side bets</li>
+                <li>you can double -> in case the same card is received</li>
+            </ul>
+        </div>
+        <div>
+            <h2 class="ruleHeaders">Dealer:</h2>
+            <ul class="ruleLists">
+                <li>Dealer shows one card at the start</li>
+                <li>Dealer must hit until reaching 17 or higher</li>
+            </ul>
+        </div>
+        <div>
+            <h2 class="ruleHeaders">Win condition:</h2>
+            <ul class="ruleLists">
+                <li>hit blackjack(21)</li>
+                <li>dealer busts and you did not bust as well</li>
+                <li>sum bigger than the dealer without busting</li>
+            </ul>
+        </div>
+        <div>
+            <h2 class="ruleHeaders">Payout:</h2>
+            <ul class="ruleLists">
+                <li>double the bet if you win</li>
+                <li>lose the bet if you lose - simple</li>
+                <li>no insurance</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html> 
