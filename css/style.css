@@ -46,3 +46,105 @@ body {
     padding: 20px;
 }
 
+.blackjack-bet-window {
+  background: linear-gradient(135deg, #143626 0%, #0a1f15 100%);
+  padding: 20px;
+  border-radius: 14px;
+  border: 2px solid #224d37;
+  width: 320px;
+  color: #ffffff;
+  font-family: system-ui, -apple-system, sans-serif;
+  margin: 15px auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+.bj-stats-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+.bj-balance-box { 
+    color: #a3e2c9; 
+    font-weight: 600; 
+}
+.bj-error-msg { 
+    color: #ff5555; 
+    font-weight: 700; 
+    min-height: 18px; 
+}
+.bj-total-bet-display { 
+    font-size: 28px; 
+    font-weight: 800; 
+    text-align: center; 
+    margin: 10px 0; 
+    color: #ffb703; 
+}
+.bj-chips-container { 
+    display: flex; 
+    justify-content: space-between; 
+    gap: 6px; 
+    margin: 15px 0; 
+}
+.bj-chip {
+  width: 46px; 
+  height: 46px; 
+  border-radius: 50%; 
+  border: 3px dashed #ffffff;
+  font-weight: 900; 
+  font-size: 11px; 
+  cursor: pointer; 
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.05s linear;
+}
+.bj-chip:active { 
+    transform: scale(0.92); 
+}
+.bj-chip-1   { 
+    background-color: #ffffff; 
+    color: #000000; 
+}
+.bj-chip-5   { 
+    background-color: #d90429; 
+    color: #ffffff; 
+}
+.bj-chip-25  { 
+    background-color: #0056b3; 
+    color: #ffffff; 
+}
+.bj-chip-100 { 
+    background-color: #111111; 
+    color: #ffffff; 
+}
+.bj-chip-500 { 
+    background-color: #6a040f; 
+    color: #ffffff; 
+}
+.bj-action-controls { 
+    display: flex; 
+    gap: 10px; 
+}
+.bj-btn { 
+    flex: 1; 
+    padding: 10px; 
+    border: none; 
+    border-radius: 6px; 
+    font-weight: 700; 
+    font-size: 13px; 
+    cursor: pointer; 
+}
+.bj-btn-clear { 
+    background-color: #44554c; 
+    color: #ffffff; 
+}
+.bj-btn-deal { 
+    background-color: #ffb703; 
+    color: #023047; 
+}
+.bj-btn-deal:disabled { 
+    background-color: #2d3b34;
+    color: #61736a; 
+    cursor: not-allowed; 
+}
