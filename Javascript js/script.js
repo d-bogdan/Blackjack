@@ -22,12 +22,7 @@ window.onload = function() {
     startGame();
 }
 
-// ---------------------------------------------------------------------------
-// Deck / shoe
-// The game is played with a shoe of NUM_DECKS standard 52-card decks
-// (3 x 52 = 156 cards). Cards are strings in the "VALUE-SUIT" format
-// (e.g. "A-S", "10-H") so they match the file names in ./images/.
-// ---------------------------------------------------------------------------
+//start matteo
 
 const NUM_DECKS = 3;
 const CARD_VALUES = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
@@ -71,6 +66,9 @@ function drawCard() {
     }
     return deck.pop();
 }
+
+
+// end matteo
 
 function startGame() {
     hidden = deck.pop();
