@@ -14,7 +14,7 @@
 
 #div1 h1 {
     font-size: 3rem;
-    font-color: white
+    
 }
 
 #div1 fieldset {
@@ -31,7 +31,7 @@ input {
 }
 #rules h2 {
     font-size: 2rem;
-    font-color: white;
+    
 }
 
 body {
@@ -39,6 +39,8 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
+     color: #ffffff;   
+    
 }
 
 #rules {

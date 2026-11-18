@@ -1,25 +1,109 @@
-body{
-    background-image: url("../images/blackjack-table.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.table-container{
-    position: relative;
-    width: 100vw;
-    height: 100vh;
+body {
+    background-color: #000;
+    color: #ffffff;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Times New Roman', Times, serif;
 }
 
-.seat{
-    position: absolute;
-    width: 100px;
-    height: 100px;
+/* --------------Layout (Nihar)---------------------------*/
+.casino{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    cursor: pointer;
+    padding: 20px 0;
 }
 
+.seat {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-width: 100px;
+    min-height: 100px;
+}
 
+#dealer-spot{
+    top: 6%;
+}
+
+#player-spot{
+    bottom: 10%;
+}
+
+.cards-container{
+    display: flex;
+    gap: 6px;
+    min-height: 90px;
+}
+
+/* -------Table(Nihar) ------------------*/
+.table-rim {
+    position: relative;
+    z-index: 1;                          /* on top of the chairs */
+    width: min(90vw, 1000px);
+    padding: 28px;
+    background: #5c3a1e;
+    box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.9),
+    inset 0 3px 6px rgba(255, 255, 255, 0.25);
+
+}
+
+.table-container {
+    position: relative;
+    width: 100%;
+    height: 500px;                                        /* gives the table its size */
+    background-image: url("../images/blackjack-table.jpg"); /* your table image */
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+}
+/*-------------chairs (Nihar)------------------*/
+
+.chair{
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+}
+
+.chair-back{
+    width: 130px;
+    height: 35px;
+    background:  #8b1a1a; 
+    border: 5px solid #3e2612;
+    border-radius: 25px 25px 8px 8px;
+}
+
+.chair-seat{
+    
+    width: 110px;
+    height: 80px;
+    background: #8b1a1a;
+    border: 5px solid #3e2612;
+    border-radius: 18px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
+}
+
+.dealer-chair {
+    margin-bottom: -25px;                /* tucks under the table edge */
+}
+
+.player-chair {
+    flex-direction: column-reverse;      /* backrest at the bottom */
+    margin-top: -25px;
+}
+
+.player-chair .chair-back {
+    border-radius: 8px 8px 25px 25px;
+}
 

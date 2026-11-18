@@ -3,29 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="stylesheet" href="css/game-page-styles.css" />
     <title>BlackJack</title>
 </head>
-<link rel="stylesheet" href="css/game-page-styles.css" />
 <body>
-    
-    <div class="table-container">
-                <!-- dealer position-->
+    <div class="casino">
+
+        <!-- Dealer chair (Nihar) -->
+        <div class="chair dealer-chair">
+            <div class="chair-back"></div>
+            <div class="chair-seat"></div>
+        </div>
+
+        <!-- Table: wooden rim + felt (Nihar) -->
+        <div class="table-rim">
+            <div class="table-container">
+
+                <!-- dealer position (top center: made by Nihar) -->
                 <div id="dealer-spot" class="seat">
-                <div id="dealer-cards" class="cards-container"></div>
-             <div id="dealer-score" class="score-badge">0</div>
+                    <div id="dealer-cards" class="cards-container"></div>
+                    <div id="dealer-score" class="score-badge">0</div>
+                </div>
+
+                <!-- player position (bottom center: Made by Nihar) -->
+                <div id="player-spot" class="seat">
+                    <div id="player-cards" class="cards-container"></div>
+                    <div id="player-score" class="score-badge">0</div>
+                </div>
+
             </div>
+        </div>
 
-    <!-- player position (center bottom)-->
-     <div div="player-position"></div>
-        <div id="player-spot" class="seat">
-        <div id="player-cards" class="cards-container"></div>
-        <div id="player-score" class="score-badge">0</div>
+        <!-- Player chair (Nihar) -->
+        <div class="chair player-chair">
+            <div class="chair-back"></div>
+            <div class="chair-seat"></div>
+        </div>
+
     </div>
-</div>
-
-
-
-    
-</body>
-</html>
