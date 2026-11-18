@@ -99,7 +99,7 @@ body {
 }
 
 .player-chair {
-    flex-direction: column-reverse;      /* backrest at the bottom */
+    flex-direction: center;      /* backrest at the bottom */
     margin-top: -25px;
 }
 
