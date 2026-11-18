@@ -22,27 +22,54 @@ window.onload = function() {
     startGame();
 }
 
+// ---------------------------------------------------------------------------
+// Deck / shoe
+// The game is played with a shoe of NUM_DECKS standard 52-card decks
+// (3 x 52 = 156 cards). Cards are strings in the "VALUE-SUIT" format
+// (e.g. "A-S", "10-H") so they match the file names in ./images/.
+// ---------------------------------------------------------------------------
+
+const NUM_DECKS = 3;
+const CARD_VALUES = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+const CARD_SUITS = ["C", "D", "H", "S"]; // Clubs, Diamonds, Hearts, Spades
+
+// When fewer than this many cards are left, the shoe is rebuilt and reshuffled
+// (roughly 25% of the shoe, like the "cut card" in a real casino).
+const RESHUFFLE_THRESHOLD = Math.floor(NUM_DECKS * 52 * 0.25);
+
+// Fills the global `deck` with NUM_DECKS full decks, in order (not shuffled).
 function buildDeck() {
-    let values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
-    let types = ["C", "D", "H", "S"];
     deck = [];
 
-    for (let i = 0; i < types.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            deck.push(values[j] + "-" + types[i]); //A-C -> K-C, A-D -> K-D
+    for (let d = 0; d < NUM_DECKS; d++) {
+        for (let i = 0; i < CARD_SUITS.length; i++) {
+            for (let j = 0; j < CARD_VALUES.length; j++) {
+                deck.push(CARD_VALUES[j] + "-" + CARD_SUITS[i]); // A-C -> K-C, A-D -> K-D, ...
+            }
         }
     }
-    // console.log(deck);
 }
 
+// Shuffles the global `deck` in place using the Fisher-Yates algorithm,
+// which gives every possible ordering the same probability.
 function shuffleDeck() {
-    for (let i = 0; i < deck.length; i++) {
-        let j = Math.floor(Math.random() * deck.length); // (0-1) * 52 => (0-51.9999)
+    for (let i = deck.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1)); // random index in [0, i]
         let temp = deck[i];
         deck[i] = deck[j];
         deck[j] = temp;
     }
-    console.log(deck);
+}
+
+// Takes the top card from the shoe. If the shoe is running low it is rebuilt
+// and reshuffled first, so the game never runs out of cards.
+// Can be used instead of deck.pop() in the game logic.
+function drawCard() {
+    if (deck.length <= RESHUFFLE_THRESHOLD) {
+        buildDeck();
+        shuffleDeck();
+    }
+    return deck.pop();
 }
 
 function startGame() {
