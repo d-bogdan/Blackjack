@@ -14,6 +14,7 @@
 
 #div1 h1 {
     font-size: 3rem;
+    font-color: white
 }
 
 #div1 fieldset {
@@ -30,10 +31,11 @@ input {
 }
 #rules h2 {
     font-size: 2rem;
+    font-color: white;
 }
 
 body {
-    background-image: url("../images/background\ image.jpg");
+    background-image: url("../images/Gemini_Generated_Image_w5ork3w5ork3w5or.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
