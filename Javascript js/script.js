@@ -124,7 +124,20 @@ function drawCard() {
 
 function startGame() {
     canHit = true;
-    hidden = deck.pop();
+
+    //Bogdan intervetion to clear everything before a second round
+    dealerSum = 0;
+    yourSum = 0;
+    dealerAceCount = 0;
+    yourAceCount = 0;
+    document.getElementById("your-cards").innerHTML = "";
+    document.getElementById("dealer-cards").innerHTML = "<img id=\"hidden\" src=\"/images/BACK.png\">";
+    document.getElementById("dealer-score").innerText = "0";
+    document.getElementById("player-score").innerText = "0";
+    document.getElementById("results").innerText = "";
+
+
+    hidden = drawCard();
     dealerSum += getValue(hidden);
     dealerAceCount += checkAce(hidden);
     // console.log(hidden);
@@ -132,24 +145,24 @@ function startGame() {
     while (dealerSum < 17) {
         //<img src="./images/4-C.svg">
         let cardImg = document.createElement("img");
-        let card = deck.pop();
+        let card = drawCard();
         cardImg.src = "./images/" + card + ".svg";
         dealerSum += getValue(card);
         dealerAceCount += checkAce(card);
         document.getElementById("dealer-cards").append(cardImg);
     }
-    console.log(dealerSum);
+    //console.log(dealerSum);
 
     for (let i = 0; i < 2; i++) {
         let cardImg = document.createElement("img");
-        let card = deck.pop();
+        let card = drawCard();
         cardImg.src = "./images/" + card + ".svg";
         yourSum += getValue(card);
         yourAceCount += checkAce(card);
         document.getElementById("your-cards").append(cardImg);
     }
-
-    console.log(yourSum);
+    document.getElementById("player-score").innerText = yourSum;
+    //console.log(yourSum);
 }
 
 function hit() {
@@ -158,7 +171,7 @@ function hit() {
     }
 
     let cardImg = document.createElement("img");
-    let card = deck.pop();
+    let card = drawCard();
     cardImg.src = "./images/" + card + ".svg";
     yourSum += getValue(card);
     yourAceCount += checkAce(card);
@@ -168,6 +181,7 @@ function hit() {
         canHit = false;
     }
 
+    document.getElementById("player-score").innerText = yourSum;
 }
 
 function stay() {
@@ -205,8 +219,8 @@ function stay() {
     document.getElementById("bj-bet-display").innerText = "Bet: $0";
     isBettingPhase = true;
 
-    document.getElementById("dealer-sum").innerText = dealerSum;
-    document.getElementById("your-sum").innerText = yourSum;
+    document.getElementById("dealer-score").innerText = dealerSum;
+    document.getElementById("player-score").innerText = yourSum;
     document.getElementById("results").innerText = message;
 }
 
