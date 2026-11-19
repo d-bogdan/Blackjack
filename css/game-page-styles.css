@@ -68,45 +68,6 @@ body {
     background-position: center;
     border-radius: 12px;
 }
-/*-------------chairs (Nihar)------------------*/
-
-.chair{
-    display: flex;
-    flex-direction: center;
-    align-items: center;
-}
-
-.chair-back{
-    width: 130px;
-    height: 35px;
-    background:  #8b1a1a; 
-    border: 5px solid #3e2612;
-    border-radius: 25px 25px 8px 8px;
-}
-
-.chair-seat{
-    
-    width: 110px;
-    height: 80px;
-    background: #8b1a1a;
-    border: 5px solid #3e2612;
-    border-radius: 18px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
-}
-
-.dealer-chair {
-    margin-bottom: -25px;                /* tucks under the table edge */
-}
-
-.player-chair {
-    flex-direction: center;      /* backrest at the bottom */
-    margin-top: -25px;
-}
-
-.player-chair .chair-back {
-    border-radius: 8px 8px 25px 25px;
-}
-
 
 /*-----Bogdan start------*/
 .blackjack-bet-window {
