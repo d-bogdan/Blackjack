@@ -43,7 +43,11 @@ body {
 .cards-container{
     display: flex;
     gap: 6px;
-    min-height: 90px;
+    min-height: 120px;
+}
+.cards-container img {
+    height: 120px;
+    width: auto;
 }
 
 /* -------Table(Nihar) ------------------*/
@@ -63,7 +67,7 @@ body {
     position: relative;
     width: 100%;
     height: 500px;                                        /* gives the table its size */
-    background-image: url("../images/blackjack-table.jpg"); /* your table image */
+    background-image: url("../images/blackjackTableFixed.png"); /* your table image */
     background-size: cover;
     background-position: center;
     border-radius: 12px;
@@ -193,12 +197,12 @@ body {
     cursor:pointer;
 }
 #hit {
-    background-color: #ffb703;
+    background: linear-gradient(180deg, #ffca3a 0%, #ffb703 100%);
     color: #023047;
     border: 2px solid #ffb703;
 }
 #stay {
-    background-color: #263238;
+    background: linear-gradient(180deg, #37474f 0%, #263238 100%);
     color: #ffffff;
     border: 2px solid #90a4ae;
 }
@@ -222,7 +226,34 @@ body {
     transform: scale(0.95);
     filter: none;
 }
-#player-name {
+#name-and-score {
     z-index: 2;
+    position: absolute;
+    bottom: 30px;
+    font-size: 26px;
+    display: flex;
+    gap: 10px;
+    left:50%;
+    transform: translate(-50%);
+    justify-content: center;
+    align-items: center;
+    background: rgba(9, 26, 16, 0.78);
+    padding: 5px;
+    border-radius: 10px;
+    border: 1.5px solid rgba(255, 183, 3, 0.55);
+    color: #ffffff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
-/*----Wojek end*----/
+.score-badge {
+    font-size: 26px;
+    min-width: 36px;
+    height: 32px;
+    background: linear-gradient(180deg, #f5d35c 0%, #cfa025 100%);
+    padding: 0 11px;
+    color: #0e2216;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    border-radius: 999px;
+    box-shadow:0 2px 5px rgba(0, 0, 0, 0.35);
+}
+/*----Wojek end----*/
