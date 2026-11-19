@@ -13,14 +13,65 @@ let deck;
 let canHit = false; //allows the player (you) to draw while yourSum <= 21
 
 let currentBet = 0;
-let playerBalance = 1000;
+
+let playerBalance = localStorage.getItem("Balance"); //Bogdan (I handle the money part)
+if(playerBalance == null){
+    playerBalance = 1000;
+}
+else{
+    playerBalance = Number(playerBalance);
+}
+let isBettingPhase = true;
 
 window.onload = function() {
+    document.getElementById("hit").addEventListener("click", hit);
+    document.getElementById("stay").addEventListener("click", stay);
     buildDeck();
     shuffleDeck();
+    updateBalance(playerBalance);
     setupBettingSystem();
-    startGame();
 }
+
+//Bogdan start
+function updateBalance(newAmount){
+    localStorage.setItem("Balance", newAmount);
+    document.getElementById("bj-balance").innerText = "$" + newAmount;
+}
+
+function setupBettingSystem(){
+    document.querySelectorAll(".bj-chip").forEach(function(chip) {
+        chip.addEventListener("click", function(){
+            if(!isBettingPhase) return;
+            var chipValue = Number(this.getAttribute("data-value"));
+            if(currentBet + chipValue <= playerBalance){
+                document.getElementById("bj-bet-error").innerText = "";
+                currentBet += chipValue;
+                document.getElementById("bj-bet-display").innerText = "Bet: $" + currentBet;
+            }
+            else{
+                document.getElementById("bj-bet-error").innerText = "Insufficient funds";
+            }
+        });
+    });
+
+    document.getElementById("bj-deal-btn").addEventListener("click", function(){
+        if(!isBettingPhase || currentBet === 0) return;
+        document.getElementById("bj-bet-error").innerText = "";
+        playerBalance -= currentBet;
+        updateBalance(playerBalance);
+        isBettingPhase = false;
+        startGame();
+    })
+
+    document.getElementById("bj-clear-btn").addEventListener("click", function(){
+        if(!isBettingPhase) return;
+        document.getElementById("bj-bet-error").innerText = "";
+        currentBet = 0;
+        document.getElementById("bj-bet-display").innerText = "Bet: $" + currentBet;
+    })
+}
+
+//Bogdan end
 
 //start matteo
 
@@ -71,6 +122,7 @@ function drawCard() {
 // end matteo
 
 function startGame() {
+    canHit = true;
     hidden = deck.pop();
     dealerSum += getValue(hidden);
     dealerAceCount += checkAce(hidden);
@@ -97,9 +149,6 @@ function startGame() {
     }
 
     console.log(yourSum);
-    document.getElementById("hit").addEventListener("click", hit);
-    document.getElementById("stay").addEventListener("click", stay);
-
 }
 
 function hit() {
@@ -133,17 +182,27 @@ function stay() {
     }
     else if (dealerSum > 21) {
         message = "You win!";
+        playerBalance += 2 * currentBet; //Bogdan
+        updateBalance(playerBalance);
     }
     //both you and dealer <= 21
     else if (yourSum == dealerSum) {
         message = "Tie!";
+        playerBalance += currentBet;
+        updateBalance(playerBalance);
     }
     else if (yourSum > dealerSum) {
         message = "You Win!";
+        playerBalance += 2 * currentBet;
+        updateBalance(playerBalance);
     }
     else if (yourSum < dealerSum) {
         message = "You Lose!";
     }
+    
+    currentBet = 0;
+    document.getElementById("bj-bet-display").innerText = "Bet: $0";
+    isBettingPhase = true;
 
     document.getElementById("dealer-sum").innerText = dealerSum;
     document.getElementById("your-sum").innerText = yourSum;
