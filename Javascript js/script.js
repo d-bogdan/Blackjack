@@ -131,7 +131,7 @@ function startGame() {
     dealerAceCount = 0;
     yourAceCount = 0;
     document.getElementById("your-cards").innerHTML = "";
-    document.getElementById("dealer-cards").innerHTML = "<img id=\"hidden\" src=\"/images/BACK.png\">";
+    document.getElementById("dealer-cards").innerHTML = "<img id=\"hidden\" src=\"./images/BACK.png\">";
     document.getElementById("dealer-score").innerText = "0";
     document.getElementById("player-score").innerText = "0";
     document.getElementById("results").innerText = "";
@@ -161,7 +161,7 @@ function startGame() {
         yourAceCount += checkAce(card);
         document.getElementById("your-cards").append(cardImg);
     }
-    document.getElementById("player-score").innerText = yourSum;
+    document.getElementById("player-score").innerText = reduceAce(yourSum, yourAceCount);
     //console.log(yourSum);
 }
 
@@ -179,12 +179,14 @@ function hit() {
 
     if (reduceAce(yourSum, yourAceCount) > 21) { //A, J, 8 -> 1 + 10 + 8
         canHit = false;
+        stay();
     }
 
-    document.getElementById("player-score").innerText = yourSum;
+    document.getElementById("player-score").innerText = reduceAce(yourSum, yourAceCount);
 }
 
 function stay() {
+    if(isBettingPhase) return;
     dealerSum = reduceAce(dealerSum, dealerAceCount);
     yourSum = reduceAce(yourSum, yourAceCount);
 
