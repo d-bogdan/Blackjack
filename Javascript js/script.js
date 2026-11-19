@@ -29,6 +29,7 @@ window.onload = function() {
     buildDeck();
     shuffleDeck();
     updateBalance(playerBalance);
+    setName();
     setupBettingSystem();
 }
 
@@ -129,7 +130,7 @@ function startGame() {
     // console.log(hidden);
     // console.log(dealerSum);
     while (dealerSum < 17) {
-        //<img src="./cards/4-C.png">
+        //<img src="./images/4-C.svg">
         let cardImg = document.createElement("img");
         let card = deck.pop();
         cardImg.src = "./images/" + card + ".svg";
@@ -158,7 +159,7 @@ function hit() {
 
     let cardImg = document.createElement("img");
     let card = deck.pop();
-    cardImg.src = "./cards/" + card + ".png";
+    cardImg.src = "./images/" + card + ".svg";
     yourSum += getValue(card);
     yourAceCount += checkAce(card);
     document.getElementById("your-cards").append(cardImg);
@@ -174,7 +175,7 @@ function stay() {
     yourSum = reduceAce(yourSum, yourAceCount);
 
     canHit = false;
-    document.getElementById("hidden").src = "./cards/" + hidden + ".png";
+    document.getElementById("hidden").src = "./images/" + hidden + ".svg"; //there is no "hidden" id in the html, pls fix
 
     let message = "";
     if (yourSum > 21) {
@@ -236,3 +237,13 @@ function reduceAce(playerSum, playerAceCount) {
     }
     return playerSum;
 }
+//wojteks name grabber start
+function setName() {
+    let URLString = new URLSearchParams(window.location.search);
+    let playerName = URLString.get("firstNameField");
+    if(playerName == null){
+        playerName="guest";
+    }
+    document.getElementById("player-name").innerText = playerName;
+}
+

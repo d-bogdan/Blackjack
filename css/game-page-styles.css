@@ -174,3 +174,55 @@ body {
 }
 
 /*-----Bogdan end------*/
+/*-----Wojtek Start----*/
+.hit-stay-btn-container {
+    position:absolute;
+    z-index: 2;
+    right:30px;
+    bottom:30px;
+    gap: 25px;
+}
+.hit-stay-buttons {
+    font-size: 30px;
+    font-weight: 500;
+    min-width: 120px;
+    min-height: 50px;
+    padding: 5px;
+    border-radius: 10px;
+    transition: transform 0.05s ease-in;
+    cursor:pointer;
+}
+#hit {
+    background-color: #ffb703;
+    color: #023047;
+    border: 2px solid #ffb703;
+}
+#stay {
+    background-color: #263238;
+    color: #ffffff;
+    border: 2px solid #90a4ae;
+}
+#hit:hover {
+    filter:brightness(1.1);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.55);
+}
+#stay:hover {
+    filter:brightness(1.15);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.55);
+}
+#hit:active {
+    background-color: #c28b00;
+    transform: scale(0.95);
+    filter: none;
+}
+#stay:active {
+    background-color: #1a2327;
+    transform: scale(0.95);
+    filter: none;
+}
+#player-name {
+    z-index: 2;
+}
+/*----Wojek end*----/
