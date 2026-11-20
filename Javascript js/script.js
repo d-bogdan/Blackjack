@@ -142,7 +142,7 @@ function startGame() {
     dealerAceCount += checkAce(hidden);
     // console.log(hidden);
     // console.log(dealerSum);
-    while (dealerSum < 17) {
+    while (reduceAce(dealerSum, dealerAceCount) < 17) {
         //<img src="./images/4-C.svg">
         let cardImg = document.createElement("img");
         let card = drawCard();
@@ -177,12 +177,13 @@ function hit() {
     yourAceCount += checkAce(card);
     document.getElementById("your-cards").append(cardImg);
 
+    document.getElementById("player-score").innerText = reduceAce(yourSum, yourAceCount);
+
     if (reduceAce(yourSum, yourAceCount) > 21) { //A, J, 8 -> 1 + 10 + 8
         canHit = false;
         stay();
     }
 
-    document.getElementById("player-score").innerText = reduceAce(yourSum, yourAceCount);
 }
 
 function stay() {
