@@ -142,15 +142,14 @@ function startGame() {
     dealerAceCount += checkAce(hidden);
     // console.log(hidden);
     // console.log(dealerSum);
-    while (reduceAce(dealerSum, dealerAceCount) < 17) {
-        //<img src="./images/4-C.svg">
-        let cardImg = document.createElement("img");
-        let card = drawCard();
-        cardImg.src = "./images/" + card + ".svg";
-        dealerSum += getValue(card);
-        dealerAceCount += checkAce(card);
-        document.getElementById("dealer-cards").append(cardImg);
-    }
+
+    let cardImg = document.createElement("img");
+    let card = drawCard();
+    cardImg.src = "./images/" + card + ".svg";
+    dealerSum += getValue(card);
+    dealerAceCount += checkAce(card);
+    document.getElementById("dealer-cards").append(cardImg);
+    document.getElementById("dealer-score").innerText = getValue(card);
     //console.log(dealerSum);
 
     for (let i = 0; i < 2; i++) {
@@ -186,13 +185,23 @@ function hit() {
 
 }
 
+//Sabin start
 function stay() {
     if(isBettingPhase) return;
-    dealerSum = reduceAce(dealerSum, dealerAceCount);
     yourSum = reduceAce(yourSum, yourAceCount);
 
     canHit = false;
     document.getElementById("hidden").src = "./images/" + hidden + ".svg"; //there is no "hidden" id in the html, pls fix
+    while (reduceAce(dealerSum, dealerAceCount) < 17) {
+        //<img src="./images/4-C.svg">
+        let cardImg = document.createElement("img");
+        let card = drawCard();
+        cardImg.src = "./images/" + card + ".svg";
+        dealerSum += getValue(card);
+        dealerAceCount += checkAce(card);
+        document.getElementById("dealer-cards").append(cardImg);
+    }
+    dealerSum = reduceAce(dealerSum, dealerAceCount);
 
     let message = "";
     if (yourSum > 21) {
@@ -254,6 +263,7 @@ function reduceAce(playerSum, playerAceCount) {
     }
     return playerSum;
 }
+//Sabin end
 //wojteks name grabber start
 function setName() {
     let URLString = new URLSearchParams(window.location.search);
