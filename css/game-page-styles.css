@@ -66,8 +66,8 @@ body {
 .table-container {
     position: relative;
     width: 100%;
-    height: 500px;                                        /* gives the table its size */
-    background-image: url("../images/blackjackTableFixed.png"); /* your table image */
+    height: 500px;                                        /* table size */
+    background-image: url("../images/blackjackTableFixed.png"); /*  table image */
     background-size: cover;
     background-position: center;
     border-radius: 12px;
